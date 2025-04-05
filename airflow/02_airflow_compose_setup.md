@@ -28,26 +28,26 @@ Docker Compose는 여러 컨테이너 서비스를 하나의 설정 파일(`dock
 
 ## 3. 실무에서 중요하게 보는 Airflow Docker 설정 포인트
 
-### ✅ 컨테이너 분리
+### 컨테이너 분리
 - 개발용에서는 `webserver`, `scheduler`를 하나로 합칠 수 있으나  
   **실무에선 일반적으로 각 역할별로 별도 컨테이너 구성**  
   → 배포, 모니터링, 확장성 확보를 위해
 
-### ✅ 환경 변수 관리
+### 환경 변수 관리
 - `AIRFLOW__` 형태로 모든 설정 커스터마이징 가능
 - 실무에선 `.env` 또는 `secrets manager`로 환경변수를 외부화함
 - 민감 정보(`DB 비밀번호`, `Slack URL`, `API Key`)는 코드에 직접 쓰지 않음
 
-### ✅ 로그 관리
+### 로그 관리
 - `logs`를 volume으로 연결하여 **외부에서 실시간 확인 가능**하게 구성
 - 실무에서는 로그를 **ELK Stack / S3 / CloudWatch** 등에 연동
 
-### ✅ DAG 자동 감지
+### DAG 자동 감지
 - `AIRFLOW__CORE__DAG_DISCOVERY_SAFE_MODE=False` 설정을 통해  
   DAG 파일 변경 시 자동으로 반영되도록 구성
 - `airflow dags reserialize` 명령으로 수동 강제 인식도 가능
 
-### ✅ Slack / Alert 연동
+### Slack / Alert 연동
 - 실무에서는 DAG 실패 시 Slack 알림을 통해 **모니터링 자동화** 필수
 - `SLACK_WEBHOOK_URL` 설정 필요 + 공통 Operator로 래핑
 
