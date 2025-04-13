@@ -179,13 +179,36 @@ mNames.add("c")
 
 ## 7. SAM 변환 (Single Abstract Method)
 
+SAM 변환이란, 하나의 추상 메서드만 가진 인터페이스를 람다 표현식으로 구현할 수 있게 해주는 기능이다.  
+Java와 Kotlin 모두 SAM 변환을 지원하지만, Kotlin이 더 자연스럽고 강력하게 표현할 수 있다.
+
+### 차이 비교
+
 | 항목 | Java | Kotlin |
 |------|------|--------|
-| SAM 지원 | 기본 지원 (`Runnable`) | `fun interface` 필요 |
-| 람다 표현 | `(e) -> {}` | 동일 |
-| 제한 | 없음 | Kotlin 인터페이스는 명시 필요 |
+| SAM 변환 지원 | Java 8부터 지원 (익명 클래스 대체) | 기본적으로 지원 (Java 인터페이스 대상) |
+| 람다 표현 가능 대상 | Java 함수형 인터페이스만 | Java 함수형 인터페이스 + `fun interface` |
+| Kotlin 인터페이스 람다 표현 | 불가능 | `fun interface`로 명시해야 가능 |
+| 선언 간결성 | 제한적 (`Runnable r = () -> {}`) | 매우 간결 (`val r = Runnable {}`) |
 
-### Kotlin 예시
+### Kotlin 전용 문법 예시 (Java에서는 불가능)
+```kotlin
+val r = Runnable { println("Run") } // Kotlin에서 Java Runnable SAM 변환
+```
+
+Java에서는 위와 같은 선언은 불가능하며, 다음과 같이 작성해야 한다:
+```java
+Runnable r = new Runnable() {
+    @Override
+    public void run() {
+        System.out.println("Run");
+    }
+};
+
+Runnable r2 = () -> System.out.println("Run"); // 함수형 인터페이스만 람다 가능
+```
+
+### Kotlin의 fun interface 사용 예시
 ```kotlin
 fun interface ClickListener {
     fun onClick(msg: String)
@@ -194,10 +217,7 @@ fun interface ClickListener {
 val listener = ClickListener { println("Clicked $it") }
 ```
 
-### Java 인터페이스 사용 예시
-```kotlin
-val r = Runnable { println("Run") } // Java SAM 변환 가능
-```
+Kotlin에서 자신이 만든 인터페이스도 SAM 변환이 되도록 하려면 `fun interface` 키워드가 필요하다.
 
 ---
 
