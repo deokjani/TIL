@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>주식 프로그램</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="btnClose">
+    <property name="geometry">
+     <rect>
+      <x>998</x>
+      <y>700</y>
+      <width>193</width>
+      <height>53</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>프로그램 종료</string>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="tbl_finance">
+    <property name="geometry">
+     <rect>
+      <x>18</x>
+      <y>14</y>
+      <width>1167</width>
+      <height>371</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>771</width>
+      <height>0</height>
+     </size>
+    </property>
+    <attribute name="horizontalHeaderDefaultSectionSize">
+     <number>150</number>
+    </attribute>
+    <attribute name="horizontalHeaderMinimumSectionSize">
+     <number>23</number>
+    </attribute>
+    <row>
+     <property name="text">
+      <string>삼성전자(005930)</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>LG(003550)</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>한화(000880)</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>두산(000150)</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>카카오(035720)</string>
+     </property>
+    </row>
+    <column>
+     <property name="text">
+      <string>종목명</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>현재가</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>5일 이동평균</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>상승장/하락장</string>
+     </property>
+    </column>
+   </widget>
+   <widget class="QLabel" name="lb_date">
+    <property name="geometry">
+     <rect>
+      <x>7</x>
+      <y>696</y>
+      <width>583</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>갱신일자 : 2025-05-07 00:00:00</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1200</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
